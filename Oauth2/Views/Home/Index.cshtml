@@ -1,0 +1,15 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    <h1>Welcome, @Context.Session.GetString("UserName")!</h1>
+    <p>Your email: @Context.Session.GetString("UserEmail")</p>
+    <br />
+    <a asp-controller="Login" asp-action="Logout" class="btn btn-danger">Logout</a>
+}
+else
+{
+    <h1>You are not logged in.</h1>
+    <p>Click below to login with Google.</p>
+    <form asp-controller="Login" asp-action="Login" method="post">
+        <button type="submit" class="btn btn-primary">Login with Google</button>
+    </form>
+}
